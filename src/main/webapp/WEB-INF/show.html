@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="show.css">
+    <script type="text/javascript" src="Vue/vue.js"></script>
 </head>
 <body>
 <div id="title">
-    <h1 class="title">航班信息</h1>
+    <h1 class="title">{{title}}</h1>
 </div>
 
-<div></div>
+<div id="message">
+    <table id="table">
+        <tr>
+            <th>航班号</th>
+            <th>航空公司</th>
+            <th>始发地</th>
+            <th>目的地</th>
+            <th>经停</th>
+            <th>计划起飞时间</th>
+            <th>计划到达时间</th>
+            <th>航站楼</th>
+            <th>登机口</th>
+            <th>值机柜台</th>
+            <th>航班状态</th>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    new Vue({
+        el:'#title',
+        data:{
+            title:'航班信息'
+        }
+    });
+</script>
 
 </body>
 </html>

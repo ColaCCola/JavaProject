@@ -2,7 +2,19 @@
     margin: 0px;
     padding: 0px;
 }
+body{
+
+}
 
 .title{
     text-align: center;
+}
+#message{
+    display: inline;
+    margin: 0 auto;
+}
+
+#table{
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
 }
