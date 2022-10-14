@@ -9,8 +9,7 @@ body{
 .title{
     text-align: center;
 }
-#message{
-    display: inline;
+#table{
     margin: 0 auto;
 }
 

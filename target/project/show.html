@@ -13,7 +13,7 @@
 
 <div id="message">
     <table id="table">
-        <tr id="head">
+        <tr>
             <th>航班号</th>
             <th>航空公司</th>
             <th>始发地</th>
@@ -37,12 +37,6 @@
             title:'航班信息'
         }
     });
-    new Vue({
-        el:'#head',
-        data:{
-
-        }
-    })
 
     var xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function () {
