@@ -2,18 +2,15 @@
     margin: 0px;
     padding: 0px;
 }
-body{
-
-}
 
 .title{
     text-align: center;
 }
-#table{
-    margin: 0 auto;
+th,td{
+    width: 150px;
+    border: 1px solid #000000;
 }
 
 #table{
-    border-bottom: 1px solid #000000;
-    border-top: 1px solid #000000;
+    margin: 0 auto;
 }

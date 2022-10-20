@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/show.css">
+    <script type="text/javascript" src="Vue/vue.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 </head>
+
 <body>
+<div id="title">
+    <h1 class="title">{{title}}</h1>
+</div>
+
+<div id="message">
+    <table id="table">
+        <tr id="head">
+            <th v-for="h of head">{{h}}</th>
+        </tr>
+
+        <tr v-for="msg of msgs">
+            <td v-for="m of msg">{{m}}</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    new Vue({
+        el:'#title',
+        data:{
+            title:'航班信息',
+        },
+    });
+    vm=new Vue({
+        el:'#message',
+        data:{
+            head:{
+                h1: "航班号",
+                h2:"航空公司",
+                h3:"始发地",
+                h4:"目的地",
+                h5:"经停",
+                h6:"计划起飞时间",
+                h7:"计划到达时间",
+                h8:"航站楼",
+                h9:"登机口",
+                h10:"值机柜台",
+                h11:"航班状态"
+            },
+            msgs:[]
+        },
+        mounted(){
+            axios
+                .get("http://localhost:8080/project_war_exploded/Query")
+                .then(response=>{
+                    this.msgs=response.data
+                    console.log(this.msgs[0].航站楼)
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+        }
+
+    })
+</script>
 
 </body>
 </html>
