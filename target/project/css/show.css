@@ -6,6 +6,9 @@
 .title{
     text-align: center;
 }
+.date{
+    text-align: right;
+}
 th,td{
     width: 150px;
     border: 1px solid #000000;
@@ -13,4 +16,5 @@ th,td{
 
 #table{
     margin: 0 auto;
+    text-align: center;
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/show.css">
+    <script type="text/javascript" src="Vue/vue.js"></script>
+</head>
+<body>
+<div id="title">
+    <h1 class="title">{{title}}</h1>
+</div>
+
+<div id="message">
+    <table id="table">
+        <tr id="head">
+            <th>航班号</th>
+            <th>航空公司</th>
+            <th>始发地</th>
+            <th>目的地</th>
+            <th>经停</th>
+            <th>计划起飞时间</th>
+            <th>计划到达时间</th>
+            <th>航站楼</th>
+            <th>登机口</th>
+            <th>值机柜台</th>
+            <th>航班状态</th>
+        </tr>
+        <tr v-for=""></tr>
+    </table>
+
+</div>
+
+<script>
+    new Vue({
+        el:'#title',
+        data:{
+            title:'航班信息'
+        }
+    });
+
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function () {
+        if(this.readyState==4&&this.status==200){
+            var html="";
+            var msgList=JSON.parse(this.responseText);
+            for(var i=0;i<msgList.length;i++){
+                html+="<tr>";
+                html+="<td>"+msgList[i]["航班号"]+"</td>";
+                html+="<td>"+msgList[i]["航空公司"]+"</td>";
+                html+="<td>"+msgList[i]["始发                                                                                                                      地"]+"</td>";
+                html+="<td>"+msgList[i]["目的地"]+"</td>";
+                html+="<td>"+msgList[i]["经停"]+"</td>";
+                html+="<td>"+msgList[i]["计划起飞时间"]+"</td>";
+                html+="<td>"+msgList[i]["计划到达时间"]+"</td>";
+                html+="<td>"+msgList[i]["航站楼"]+"</td>";
+                html+="<td>"+msgList[i]["登机口"]+"</td>";
+                html+="<td>"+msgList[i]["值机柜台"]+"</td>";
+                html+="<td>"+msgList[i]["航班状态"]+"</td></tr>";
+            }
+            document.getElementById("table").innerHTML+=html;
+        }
+    }
+    xhr.open("get","http://localhost:8080/project_war_exploded/Query",true);
+    xhr.send();
+</script>
+
+</body>
+</html>

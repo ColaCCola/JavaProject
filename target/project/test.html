@@ -11,6 +11,7 @@
 <body>
 <div id="title">
     <h1 class="title">{{title}}</h1>
+    <h2 class="title">{{date}}</h2>
 </div>
 
 <div id="message">
@@ -30,9 +31,30 @@
         el:'#title',
         data:{
             title:'航班信息',
+            date:null
         },
+        mounted() {
+            this.getTime()
+            setInterval(()=>{
+                this.getTime()
+            },1000)
+        },
+        methods:{
+            getTime(){
+                var year=new Date().getFullYear()
+                var month=new Date().getMonth()
+                var date=new Date().getDate()
+                var hours=new Date().getHours()
+                var minutes=new Date().getMinutes()
+                var seconds=new Date().getSeconds()
+                if(hours<10) hours='0'+hours
+                if(minutes<10) minutes='0'+minutes
+                if(seconds<10) seconds='0'+seconds
+                this.date=year+'-'+month+'-'+date+' '+hours+':'+minutes+':'+seconds
+            }
+        }
     });
-    vm=new Vue({
+    new Vue({
         el:'#message',
         data:{
             head:{
@@ -61,7 +83,6 @@
                     console.log(error)
                 })
         }
-
     })
 </script>
 

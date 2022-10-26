@@ -25,14 +25,19 @@
     </table>
 </div>
 
+<div id="date">
+    <h2 class="date">{{date}}</h2>
+</div>
+
 <script>
     new Vue({
         el:'#title',
         data:{
             title:'航班信息',
-        },
-    });
-    vm=new Vue({
+        }
+    })
+
+    var vm=new Vue({
         el:'#message',
         data:{
             head:{
@@ -55,13 +60,38 @@
                 .get("http://localhost:8080/project_war_exploded/Show")
                 .then(response=>{
                     this.msgs=response.data
-                    console.log(this.msgs[0].航站楼)
                 })
                 .catch(function(error){
                     console.log(error)
                 })
         }
+    })
 
+    new Vue({
+        el: '#date',
+        data:{
+            date:null
+        },
+        mounted() {
+            this.getTime()
+            setInterval(()=>{
+                this.getTime()
+            },1000)
+        },
+        methods:{
+            getTime(){
+                var year=new Date().getFullYear()
+                var month=new Date().getMonth()
+                var date=new Date().getDate()
+                var hours=new Date().getHours()
+                var minutes=new Date().getMinutes()
+                var seconds=new Date().getSeconds()
+                if(hours<10) hours='0'+hours
+                if(minutes<10) minutes='0'+minutes
+                if(seconds<10) seconds='0'+seconds
+                this.date=year+'-'+month+'-'+date+' '+hours+':'+minutes+':'+seconds
+            }
+        }
     })
 </script>
 
